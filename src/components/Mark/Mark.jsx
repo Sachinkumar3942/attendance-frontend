@@ -4,7 +4,7 @@ import { FaFingerprint } from "react-icons/fa";
 import axios from "axios";
 import "./Mark.css";
 
-const SERVER_URL = "http://localhost:4000/api/v1";
+const SERVER_URL = "https://attendance-backend-ql7c.onrender.com/api/v1";
 
 const Mark = () => {
   const [uniqueNumber, setUniqueNumber] = useState("");

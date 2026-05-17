@@ -79,7 +79,7 @@ const AddRoom = () => {
     }
 
     try {
-      await axios.post("http://localhost:4000/api/v1/admin/addRoom", { roomNo, coordinates });
+      await axios.post("https://attendance-backend-ql7c.onrender.com/api/v1/admin/addRoom", { roomNo, coordinates });
       setMessage({ type: "success", text: "Room data added successfully!" });
       setRoomNo("");
       setCoordinates([]);

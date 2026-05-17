@@ -167,7 +167,7 @@ const TakeAttendance = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/genCode', formData);
+      const response = await axios.post('https://attendance-backend-ql7c.onrender.com/api/v1/genCode', formData);
       setGeneratedCode(response.data.code);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to generate code');
@@ -178,7 +178,7 @@ const TakeAttendance = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.post(`http://localhost:4000/api/v1/deleteCode`,{generatedCode});
+      await axios.post(`https://attendance-backend-ql7c.onrender.com/api/v1/deleteCode`,{generatedCode});
       setGeneratedCode('');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to delete code');
