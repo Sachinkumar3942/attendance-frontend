@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar/navbar';
 import './Home.css';
-import { FaFingerprint, FaClock, FaChartPie, FaShieldAlt, FaRegSmile, FaRegCheckCircle } from 'react-icons/fa';
+import { FaGraduationCap, FaQrcode, FaChartBar, FaUserShield, FaCheckDouble, FaCalendarCheck } from 'react-icons/fa';
 
 function Home() {
   useEffect(() => {
@@ -12,7 +12,7 @@ function Home() {
         const elementTop = element.getBoundingClientRect().top;
         const elementBottom = element.getBoundingClientRect().bottom;
         
-        if (elementTop < window.innerHeight && elementBottom > 0) {
+        if (elementTop < window.innerHeight - 50 && elementBottom > 0) {
           element.classList.add('animate');
         }
       });
@@ -29,36 +29,36 @@ function Home() {
         {/* Hero Section */}
         <section className="hero-section">
           <div className="hero-content">
+            <div className="badge">Next-Gen Campus</div>
             <h1 className="hero-title">
-              Revolutionize Attendance with
-              <span className="gradient-text"> Biometric Tech</span>
+              University Attendance
+              <span className="gradient-text"> Made Effortless</span>
             </h1>
             <p className="hero-subtitle">
-              Secure, accurate, and effortless attendance tracking powered by fingerprint authentication
+              Secure, accurate, and seamless attendance tracking for students and faculty. Experience the future of academic administration.
             </p>
             <div className="btn-group">
-              <Link to="/login" className="btn pulse">
-                Get Started
+              <Link to="/login" className="btn btn-primary pulse">
+                Faculty & Student Login
               </Link>
             </div>
           </div>
-          <div className="fingerprint-container">
-            <div className="fingerprint-animation">
-              <FaFingerprint className="fingerprint-icon" />
-              <div className="scanning-line"></div>
+          <div className="hero-graphic">
+            <div className="graphic-circle">
+              <FaGraduationCap className="cap-icon" />
             </div>
           </div>
         </section>
 
         {/* Features Section */}
         <section className="features">
-          <h2 className="section-title scroll-animation">Why Choose Us?</h2>
+          <h2 className="section-title scroll-animation">Why Use Our Portal?</h2>
           <div className="features-grid">
             {[
-              { icon: <FaFingerprint />, title: 'Biometric Auth', text: 'Military-grade security with fingerprint recognition' },
-              { icon: <FaClock />, title: 'Real-time Tracking', text: 'Instant updates and live attendance monitoring' },
-              { icon: <FaChartPie />, title: 'Smart Analytics', text: 'Detailed reports and data visualization tools' },
-              { icon: <FaShieldAlt />, title: 'Data Protection', text: 'GDPR-compliant data security measures' },
+              { icon: <FaUserShield />, title: 'Secure Authentication', text: 'State-of-the-art passkey and biometric security.' },
+              { icon: <FaQrcode />, title: 'Location Verified', text: 'Geolocation checks ensure students are physically in class.' },
+              { icon: <FaChartBar />, title: 'Academic Analytics', text: 'Visual insights into attendance trends and semester records.' },
+              { icon: <FaCheckDouble />, title: 'Instant Processing', text: 'Real-time synchronization with the university database.' },
             ].map((feature, index) => (
               <div className="feature-card scroll-animation" key={index}>
                 <div className="feature-icon">{feature.icon}</div>
@@ -72,30 +72,30 @@ function Home() {
         {/* Stats Section */}
         <section className="stats scroll-animation">
           <div className="stat-item">
-            <FaRegSmile className="stat-icon" />
-            <h3>10,000+</h3>
-            <p>Happy Users</p>
+            <FaGraduationCap className="stat-icon" />
+            <h3>15,000+</h3>
+            <p>Students Enrolled</p>
           </div>
           <div className="stat-item">
-            <FaFingerprint className="stat-icon" />
+            <FaCalendarCheck className="stat-icon" />
             <h3>99.9%</h3>
-            <p>Accuracy Rate</p>
+            <p>System Uptime</p>
           </div>
           <div className="stat-item">
-            <FaRegCheckCircle className="stat-icon" />
-            <h3>24/7</h3>
-            <p>Support Available</p>
+            <FaCheckDouble className="stat-icon" />
+            <h3>5M+</h3>
+            <p>Classes Logged</p>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="cta-section scroll-animation">
           <div className="cta-content">
-            <h2>Ready to Transform Your Attendance System?</h2>
-            <p>Join thousands of organizations using BioAttend</p>
+            <h2>Ready to Access the Portal?</h2>
+            <p>Join the thousands of faculty and students already using the system.</p>
             <div className="btn-group">
-              <Link to="/register" className="btn btn-large">
-                Start Free Trial
+              <Link to="/register" className="btn btn-secondary">
+                Register Account
               </Link>
             </div>
           </div>
@@ -105,18 +105,18 @@ function Home() {
         <footer className="footer">
           <div className="footer-content">
             <div className="footer-section">
-              <h4>BioAttend</h4>
-              <p>Making attendance management simple, secure, and efficient</p>
+              <h4>University Portal</h4>
+              <p>Advancing academic excellence through smart administration.</p>
             </div>
             <div className="footer-section">
-              <h4>Quick Links</h4>
-              <Link to="/about">About</Link>
-              <Link to="/contact">Contact</Link>
+              <h4>Resources</h4>
+              <Link to="/help">Help Center</Link>
+              <Link to="/academic-calendar">Academic Calendar</Link>
               <Link to="/privacy">Privacy Policy</Link>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2024 BioAttend. All rights reserved</p>
+            <p>© 2024 University Attendance System. All rights reserved.</p>
           </div>
         </footer>
       </div>

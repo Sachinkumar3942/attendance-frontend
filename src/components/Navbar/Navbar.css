@@ -1,32 +1,32 @@
-:root {
-  --primary-color: #2A2E45;
-  --secondary-color: #4EB1BA;
-  --accent-color: #FF6B6B;
-  --light-bg: #F8F9FA;
-}
-
 .navbar {
   background-color: white;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 8%;
+  width: 100%;
+  padding: 0 8%;
   position: relative;
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .logo span {
@@ -35,33 +35,40 @@
 
 .nav-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
 }
 
 .login-btn, .signup-btn {
-  padding: 0.8rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
   text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .login-btn {
-  background-color: var(--secondary-color);
-  color: white;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 .signup-btn {
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: white;
 }
 
-.login-btn:hover, .signup-btn:hover {
+.login-btn:hover {
+  background-color: var(--light-bg);
+}
+
+.signup-btn:hover {
+  background-color: var(--accent-color);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .hamburger {
@@ -101,21 +108,22 @@
 
   .nav-buttons {
     position: absolute;
-    top: 100%;
+    top: 70px;
     left: 0;
     right: 0;
     background-color: white;
     flex-direction: column;
     gap: 0;
-    padding: 1rem 8%;
+    padding: 0 8%;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
   }
 
   .nav-buttons.show {
-    max-height: 500px;
+    max-height: 250px;
+    padding: 1rem 8%;
   }
 
   .login-btn, .signup-btn {
