@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./teacherDashboard.css";
+
+const SERVER_URL = "https://attendance-backend-ql7c.onrender.com/api/v1";
 
 const TeacherDashboard = () => {
     const navigate = useNavigate();
-    const teacherName = "Prof. Jane Smith";
+    const [teacherName, setTeacherName] = useState("Loading...");
     
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(`${SERVER_URL}/islogin`, { withCredentials: true });
+                setTeacherName(response.data.user.name || response.data.user.email.split('@')[0]);
+            } catch (error) {
+                console.error("Failed to fetch user:", error);
+                navigate("/login");
+            }
+        };
+        fetchUser();
+    }, [navigate]);
+
+    const handleLogout = async () => {
+        try {
+            await axios.get(`${SERVER_URL}/logout`, { withCredentials: true });
+            navigate("/");
+        } catch (error) {
+            console.error("Logout failed", error);
+            navigate("/");
+        }
+    };
+
     // Static data for demonstration
     const ongoingClasses = [
         { id: 1, course: "Mathematics", time: "09:00 AM", room: "B-204", students: 32 },
@@ -26,7 +52,7 @@ const TeacherDashboard = () => {
                 </div>
                 <button 
                     className="logout-btn"
-                    onClick={() => navigate("/")}
+                    onClick={handleLogout}
                 >
                     Logout
                 </button>

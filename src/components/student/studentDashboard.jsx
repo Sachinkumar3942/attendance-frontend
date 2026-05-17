@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./studentDashboard.css";
+
+const SERVER_URL = "https://attendance-backend-ql7c.onrender.com/api/v1";
 
 const StudentDashboard = () => {
     const navigate = useNavigate();
-    const studentName = "John Doe"; // Static data for demo
+    const [studentName, setStudentName] = useState("Loading...");
+
+    const [isAuthorized, setIsAuthorized] = useState(false);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(`${SERVER_URL}/islogin`, { withCredentials: true });
+                setStudentName(response.data.user.name || response.data.user.email.split('@')[0]);
+                setIsAuthorized(true);
+            } catch (error) {
+                console.error("Failed to fetch user:", error);
+                navigate("/login");
+            }
+        };
+        fetchUser();
+    }, [navigate]);
+
+    const handleLogout = async () => {
+        try {
+            await axios.get(`${SERVER_URL}/logout`, { withCredentials: true });
+            navigate("/");
+        } catch (error) {
+            console.error("Logout failed", error);
+            navigate("/");
+        }
+    };
+
+    if (!isAuthorized) {
+        return <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20vh' }}><h2>Loading...</h2></div>;
+    }
 
     // Static data for demonstration
     const upcomingClasses = [
@@ -28,7 +61,7 @@ const StudentDashboard = () => {
                 </div>
                 <button 
                     className="logout-btn"
-                    onClick={() => navigate("/")}
+                    onClick={handleLogout}
                 >
                     Logout
                 </button>
