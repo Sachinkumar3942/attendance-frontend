@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './components/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
 import Mark from './components/Mark/Mark';

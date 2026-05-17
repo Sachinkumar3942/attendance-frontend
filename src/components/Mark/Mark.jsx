@@ -8,7 +8,7 @@ const SERVER_URL = "https://attendance-backend-ql7c.onrender.com/api/v1";
 
 const Mark = () => {
   const [uniqueNumber, setUniqueNumber] = useState("");
-  const [email, setEmail] = useState("");
+
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
